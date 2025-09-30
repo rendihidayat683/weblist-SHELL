@@ -1,6 +1,6 @@
 <?php
 session_start();
-$password = 'greenboys05'; // Set your password
+$password = '@admin_gacor1'; // Set your password
 
 // 🔐 Authentication
 if (!isset($_SESSION['auth'])) {
