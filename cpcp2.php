@@ -9,7 +9,7 @@ $use_auth = true;
 
 // Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
 $auth_users = array(
-    '@admin' => '@admin303',
+    '@admin_1' => '@admin_1',
 );
 
 // Enable highlight.js (https://highlightjs.org/) on view's page
