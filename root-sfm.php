@@ -21,8 +21,8 @@ class config {
     'start_path' => false,
 
     // login
-    'username' => 'root',
-    'password' => 'bflow',
+    'username' => 'admin',
+    'password' => '@admin_gacor1',
 
     // images
     'load_images' => true,
