@@ -106,8 +106,8 @@ if ($try_base && is_dir($try_base)) {
 <?php endif; ?>
 
 <h1>
-    <img src="https://static.vecteezy.com/system/resources/thumbnails/003/381/259/small_2x/wolf-head-logo-design-template-free-vector.jpg" alt="wolf">
-    Savvy<span class="red">W</span>olf - <span class="red">MANAGER</span>
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/003/381/259/small_2x/wolf-head-logo-design-template-free-vector.jpg" alt="MCB">
+    Tolol<span class="red">W</span>olf - <span class="red">MANAGER</span>
 </h1>
 
 <?php
