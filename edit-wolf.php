@@ -58,7 +58,7 @@ if ($try_base && is_dir($try_base)) {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SavvyWolf</title>
+<title>TOLOL</title>
 <link rel="icon" type="image/png" href="https://static.vecteezy.com/system/resources/thumbnails/003/381/259/small_2x/wolf-head-logo-design-template-free-vector.jpg">
 <style>
     body { font-family: Arial, sans-serif; background: #111; color: #eee; margin: 0; padding: 0; }
