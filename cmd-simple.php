@@ -86,7 +86,7 @@
   </style>
 </head>
 <body>
-  <h1>Command Execution Panel</h1>
+  <h1>Command Execution K*NC3T</h1>
 
   <form method="POST" id="cmdForm" autocomplete="off">
     <label for="cmd">Enter Command</label>
