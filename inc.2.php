@@ -336,7 +336,7 @@ if ($use_auth) {
                              <form class="form-signin" action="" method="post" autocomplete="off">
                                 <div class="mb-3">
                                     <div class="brand">
-                                        <img src="https://res.cloudinary.com/ddkldtlwq/image/upload/v1744434125/481184048_968485545384124_8859604007371830801_n_wwepg7.png" alt="Logo">
+                                        <img src="https://ik.imagekit.io/expx/seo.anehinxi.png?updatedAt=1756666028408" alt="Logo">
                                     </div>
                                         <h1 class="card-title">HOKI BISA MASUK</h1>
                                     </div>
