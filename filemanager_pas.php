@@ -119,7 +119,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     <form method="post">
         <input type="text" name="login_username" placeholder="hr" required>
         <input type="password" name="login_password" placeholder="hp" required>
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
     </form>
 </div>
 </body>
