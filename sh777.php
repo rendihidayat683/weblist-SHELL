@@ -175,7 +175,7 @@ $items = scandir($path);
     <div class="header">
         <img class="logo-left" src="https://ik.imagekit.io/expx/international-womens-day.gif" alt="logo">
         <div style="display:flex; align-items:center;">
-            <a href="https://www.google.com/search?q=find+lose+cat" target="_blank" class="telegram-link">TELEGRAM</a>
+            <a href="https://www.google.com/search?q=find+lost+cat" target="_blank" class="telegram-link">TELEGRAM</a>
             <span class="shadow-text">404HIDDEN~ was here </span>
         </div>
         <img class="logo-right" src="https://ik.imagekit.io/expx/images_mini/join-cuan-terus.jpg" alt="logo">
