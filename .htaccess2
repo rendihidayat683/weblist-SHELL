@@ -1,0 +1,55 @@
+###-->> block ekstensi script (full work on WP, work only PHP on OJS)
+#<FilesMatch "\.(html|txt|xml|jpg|png)$">
+#    Header set Content-Disposition "attachment"
+#</FilesMatch>
+
+
+#<FilesMatch "\.(php|html|txt|xml|jpg|png)$">
+#    SetHandler None
+#</FilesMatch>
+
+
+#<Directory /var/www/html>
+#    AllowOverride All
+#</Directory>
+
+
+##work only php
+#<Files ~ "\.(php|html|txt)$">
+#    Require all denied
+#</Files>
+
+
+
+##testing
+#<FilesMatch "\.(Php|php|Html|html|Txt|txt)$">
+#  SetHandler None
+#  Require all denied
+#  RedirectMatch 403 \.(html|txt|xml|jpg|png)$
+#</FilesMatch>
+#RedirectMatch 403 \.(html|txt|xml|jpg|png)$
+
+
+
+##work only Php
+<FilesMatch "\.(html|php|txt|alfa|hakuna|kucrut|haxors|hoki|muru|rimuru)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+
+
+##work only php
+#<IfModule mod_rewrite.c>
+#    RewriteEngine On
+
+    # Block access to everything inside the cache directory
+#    RewriteRule ^cache/.*$ - [F,L]
+#</IfModule>
+
+=============================================================
+#*dont forget to change own
+#cek with ls -lah
+#chown nama_web:nama_web nama_file_yg_ingin_diubah 
+#*example
+#chown jurnalp:jurnalp .htaccess
