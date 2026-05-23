@@ -41,7 +41,7 @@ $global_readonly = false;
 // user specific directories
 // array('Username' => 'Directory path', 'Username2' => 'Directory path', ...)
 $directories_users = array();
-// Users: array('Zona@aman456' => 'Zona@aman456', 'Zona@aman456' => 'Zona@aman456', ...)
+// Users: array('wh0789y0v' => 'wh0789y0v', 'wh0789y0v' => 'wh0789y0v', ...)
 // Enable highlight.js (https://highlightjs.org/) on view's page
 $use_highlightjs = true;
 
