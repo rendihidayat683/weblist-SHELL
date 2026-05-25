@@ -1,3 +1,12 @@
 <FilesMatch "\.(php|phtml|php3|php4|php5|pl|py|jsp|asp|html|htm|shtml|sh|cgi|suspected|exe|js|bat|cmd)$">
     deny from all
 </FilesMatch>
+
+
+======================
+
+# SOFTACULOUS Block Forbid PHP exec
+<FilesMatch .*\.ph.*$>
+	Require all denied
+</FilesMatch>
+# SOFTACULOUS Block Forbid PHP exec End
